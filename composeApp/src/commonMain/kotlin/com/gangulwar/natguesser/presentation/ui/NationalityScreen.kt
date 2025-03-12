@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gangulwar.natguesser.data.model.NationalityResponse
 import com.gangulwar.natguesser.presentation.viewmodel.NationalityViewModel
+import com.gangulwar.natguesser.utils.getCountryNameById
 import kotlinx.coroutines.launch
 
 @Composable
@@ -86,7 +87,7 @@ fun NationalityScreen(viewModel: NationalityViewModel = NationalityViewModel()) 
                     Text(text = "Predictions for '${response.name}':", fontWeight = FontWeight.Bold)
                     response.country.forEach { country ->
                         Text(
-                            text = "${country.country_id}: ${(country.probability * 100).toInt()}%",
+                            text = "${getCountryNameById(country.country_id)}: ${(country.probability * 100).toInt()}%",
                             fontSize = 16.sp
                         )
                     }
