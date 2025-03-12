@@ -11,9 +11,8 @@ class NationalityRepository(private val client: HttpClient) {
 
     suspend fun fetchNationality(name: String): NationalityResponse? {
         return try {
-            val response: HttpResponse = client.get("https://api.nationalize.io/?name=$name")
-            val jsonString = response.body<String>()
-            Json.decodeFromString(NationalityResponse.serializer(), jsonString)
+            val response: String = client.get("https://api.nationalize.io/?name=$name").body()
+            Json { ignoreUnknownKeys = true }.decodeFromString(response)
         } catch (e: Exception) {
             e.printStackTrace()
             null
