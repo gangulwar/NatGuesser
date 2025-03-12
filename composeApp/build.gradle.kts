@@ -76,7 +76,8 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.kotlinx.datetime)
 
-            implementation("io.ktor:ktor-client-cio:3.1.1")
+            implementation(libs.ktor.client.cio)
+            implementation(libs.ktor.client.js)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
